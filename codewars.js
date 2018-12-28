@@ -30,3 +30,21 @@ function duplicateCount(text){
   
   return count;
 }
+
+//In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
+function highAndLow(numbers){
+	var num = numbers.split(' ');
+	var max = num[0];
+	var min = num[0];
+
+	for(var i = 0; i < num.length; i++){
+		if(max < parseInt(num[i])){
+			max = num[i];
+		}else if(min > parseInt(num[i])){
+			min = num[i];
+		}
+	}
+	var str = max + " " + min;
+	return str;
+}
+
