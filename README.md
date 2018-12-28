@@ -1,2 +1,2 @@
 # jsexercise
-Exercises from Codewars
+Exercises from Codewars!
