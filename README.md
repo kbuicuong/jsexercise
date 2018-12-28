@@ -1,0 +1,2 @@
+# jsexercise
+Exercises from Codewars
