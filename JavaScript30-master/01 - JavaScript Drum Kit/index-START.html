@@ -58,7 +58,30 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  //Event listener on the whole page
+  window.addEventListener('keydown', playSound);
 
+  function playSound(e){
+    //Selecting the element ---- using ES6 template strings ``
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    //Select the key element
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if(!audio) return; //stop the function from running all together
+    audio.currentTime = 0; //rewing to the start so you can hit it multiple time
+    audio.play();
+    key.classList.add('playing');
+  }
+
+  function removeTransition(e){
+    if(e.propertyName !== 'transform') return; //skip it if it's not the transform property (css)
+    //this is the key since key was the one who called this function
+    this.classList.remove('playing');
+  }
+
+  //selecting all keys
+  const keys = document.querySelectorAll('.key');
+  //for each key add event when transition ended, call removeTransition
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 </script>
 
 
