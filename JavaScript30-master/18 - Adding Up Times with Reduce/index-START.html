@@ -182,6 +182,31 @@
     </li>
   </ul>
 <script>
+  //convert nodelist into an array
+  const timeNodes = Array.from(document.querySelectorAll('[data-time]'));
+  //now you can map it
+  const seconds = timeNodes
+    .map(node => node.dataset.time)
+    //split into min and sec using destructure
+    .map(timeCode => {
+      //map through every single one and change it into a float
+      const [mins, secs] = timeCode.split(':').map(parseFloat); //"6:53".split(':') 
+      return (mins * 60) + secs;
+      console.log(mins,secs);
+    })
+    .reduce((total, vidSeconds) => total + vidSeconds );
+
+    let secondsLeft = seconds;
+    const hours = Math.floor(secondsLeft / 3600);
+    secondsLeft = secondsLeft % 3600;
+    const mins = Math.floor(secondsLeft / 60);
+    secondsLeft = secondsLeft % 60;
+
+    console.log(hours, mins, secondsLeft);
+  
+
+
+
 </script>
 </body>
 </html>
